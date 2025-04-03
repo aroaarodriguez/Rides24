@@ -19,9 +19,13 @@ import java.awt.event.ActionEvent;
 public class MainGidariGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	private JPanel jContentPane;
 	protected JLabel jLabelSelectOption;
 	private JButton jButtonAcceptRide = null;
+	private JButton jButtonCreateRide = null;
+	private JButton jButtonAddCar = null;
+	private JButton jButtonRemoveRide = null;
+	private JButton jButtonSeeMovements = null;
 
     private static BLFacade appFacadeInterface;
 	
@@ -40,13 +44,23 @@ public class MainGidariGUI extends JFrame {
 		
 		this.setSize(495, 290);
 		jLabelSelectOption = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("MainGidariGUI.Title"));
-		jLabelSelectOption.setBounds(0, 0, 481, 84);
+		jLabelSelectOption.setBounds(0, 0, 481, 42);
 		jLabelSelectOption.setFont(new Font("Tahoma", Font.BOLD, 13));
 		jLabelSelectOption.setForeground(Color.BLACK);
 		jLabelSelectOption.setHorizontalAlignment(SwingConstants.CENTER);
+	
+		jButtonCreateRide = new JButton(); //$NON-NLS-1$ //$NON-NLS-2$
+		jButtonCreateRide.setBounds(0, 42, 481, 42);
+		jButtonCreateRide.setText(ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.CreateRide"));
+		jButtonCreateRide.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame a = new CreateRideGUI(driver);
+				a.setVisible(true);
+			}
+		});
 		
 		jButtonAcceptRide = new JButton();
-		jButtonAcceptRide.setBounds(0, 168, 481, 84);
+		jButtonAcceptRide.setBounds(0, 84, 481, 42);
 		jButtonAcceptRide.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGidariGUI.AcceptRide"));
 		jButtonAcceptRide.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -54,23 +68,38 @@ public class MainGidariGUI extends JFrame {
 				a.setVisible(true);
 			}
 		});
-	    
-	    contentPane = new JPanel();
-		contentPane.setLayout(null);
-		contentPane.add(jLabelSelectOption);
-		
-		JButton jButtonCreateRide = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.CreateRide")); //$NON-NLS-1$ //$NON-NLS-2$
-		jButtonCreateRide.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFrame a = new CreateRideGUI(driver);
+
+		jButtonAddCar = new JButton();
+		jButtonAddCar.setBounds(0, 126, 481, 42);
+		//jButtonAddCar.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGidariGUI.AcceptRide"));
+		jButtonAddCar.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				JFrame a = new AddCarGUI(driver);
 				a.setVisible(true);
 			}
 		});
-		jButtonCreateRide.setBounds(0, 84, 481, 84);
-		contentPane.add(jButtonCreateRide);
-		contentPane.add(jButtonAcceptRide);
 		
-		setContentPane(contentPane);
+		jButtonRemoveRide = new JButton();
+		jButtonRemoveRide.setBounds(0, 168, 481, 42);
+		//jButtonRemoveRide.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGidariGUI.AcceptRide"));
+		jButtonRemoveRide.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				JFrame a = new KantzelatuGUI();
+				a.setVisible(true);
+			}
+		});
+		
+		jButtonSeeMovements = new JButton();
+		jButtonSeeMovements.setBounds(0, 210, 481, 42);
+		//jButtonSeeMovements.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGidariGUI.AcceptRide"));
+		jButtonSeeMovements.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				//JFrame a = new OnartuGUI(driver);
+				//a.setVisible(true);
+			}
+		});
+		
+		setContentPane(jContentPane);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -78,5 +107,19 @@ public class MainGidariGUI extends JFrame {
 			}
 		});
 
+		jContentPane = new JPanel();
+		jContentPane.setLayout(new GridLayout(6, 1, 0, 0));
+		jContentPane.add(jLabelSelectOption);
+		jContentPane.add(jButtonCreateRide);
+		jContentPane.add(jButtonAcceptRide);
+		jContentPane.add(jButtonAddCar);
+		jContentPane.add(jButtonRemoveRide);
+		jContentPane.add(jButtonSeeMovements);
+		
+		
+		setContentPane(jContentPane);
+		setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.MainTitle") + " - driver :"+driver.getName());
+		
 	}
 }
+
