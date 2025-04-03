@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.EventQueue;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,6 +22,8 @@ public class KantzelatuGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JButton btnNewButton = null;
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -43,7 +46,9 @@ public class KantzelatuGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public KantzelatuGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		setTitle(ResourceBundle.getBundle("Etiquetas").getString("KantzelatuGUI.Title"));
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,7 +56,7 @@ public class KantzelatuGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setBounds(82, 115, 262, 22);
 		contentPane.add(comboBox);
 		BLFacade facade = MainGUI.getBusinessLogic();
@@ -61,7 +66,8 @@ public class KantzelatuGUI extends JFrame {
 		   comboBox.addItem(ride);
 		}
 		
-		JButton btnNewButton = new JButton("New button");
+		btnNewButton = new JButton();
+		btnNewButton.setText(ResourceBundle.getBundle("Etiquetas").getString("KantzelatuGUI.Title"));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BLFacade facade = MainGUI.getBusinessLogic();

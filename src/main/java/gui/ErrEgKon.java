@@ -3,6 +3,7 @@ package gui;
 import java.awt.EventQueue;
 import java.util.Date;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -46,7 +47,9 @@ public class ErrEgKon extends JFrame {
 	 * Create the frame.
 	 */
 	public ErrEgKon(Bidaiari bidaiari) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle(ResourceBundle.getBundle("Etiquetas").getString("ErrEgKon.Title"));
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -65,7 +68,8 @@ public class ErrEgKon extends JFrame {
 				}
 			}
 		});
-		JButton btnNewButton = new JButton("New button");
+		btnNewButton = new JButton();
+		btnNewButton.setText(ResourceBundle.getBundle("Etiquetas").getString("ErrEgKon.Confirm"));
 		btnNewButton.setVisible(false);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

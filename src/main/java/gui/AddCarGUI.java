@@ -23,12 +23,14 @@ public class AddCarGUI extends JFrame {
     private JTextField model;
     private JTextField places;
     private JTextField color;
+    private JButton btnNewButton = null;
 
     /**
      * Create the frame.
      */
     public AddCarGUI(Driver driver) {
         
+		setTitle(ResourceBundle.getBundle("Etiquetas").getString("AddCarGUI.AddCar"));
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -46,11 +48,11 @@ public class AddCarGUI extends JFrame {
         contentPane.add(licensePlate);
         licensePlate.setColumns(10);
 
-        JLabel lblNewLabel_1 = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("AddCarGUI.licensePlate"));
+        JLabel lblNewLabel_1 = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("AddCarGUI.LicensePlate"));
         lblNewLabel_1.setBounds(46, 88, 104, 13);
         contentPane.add(lblNewLabel_1);
 
-        JLabel lblNewLabel_2 = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("AddCarGUI.model"));
+        JLabel lblNewLabel_2 = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("AddCarGUI.Model"));
         lblNewLabel_2.setBounds(46, 117, 104, 13);
         contentPane.add(lblNewLabel_2);
 
@@ -59,11 +61,11 @@ public class AddCarGUI extends JFrame {
         contentPane.add(model);
         model.setColumns(10);
 
-        JLabel lblNewLabel_3 = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("AddCarGUI.places"));
+        JLabel lblNewLabel_3 = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("AddCarGUI.Places"));
         lblNewLabel_3.setBounds(46, 152, 104, 13);
         contentPane.add(lblNewLabel_3);
 
-        JLabel lblNewLabel_4 = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("AddCarGUI.color"));
+        JLabel lblNewLabel_4 = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("AddCarGUI.Color"));
         lblNewLabel_4.setBounds(46, 185, 104, 13);
         contentPane.add(lblNewLabel_4);
 
@@ -77,7 +79,8 @@ public class AddCarGUI extends JFrame {
         contentPane.add(color);
         color.setColumns(10);
 
-        JButton btnNewButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("AddCarGUI.AddCar"));
+        btnNewButton = new JButton();
+        btnNewButton.setText(ResourceBundle.getBundle("Etiquetas").getString("AddCarGUI.AddCar"));
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		if(!licensePlate.getText().isBlank() && !places.getText().isBlank() && !model.getText().isBlank() && !color.getText().isBlank()) {

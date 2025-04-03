@@ -25,6 +25,8 @@ public class MainBidaiariGUI extends JFrame {
 	protected JLabel jLabelSelectOption;
 	private JButton jButtonWallet = null;
 	private JButton jButtonRequestRide = null;
+	private JButton jButtonSeeMovements = null;
+	private JButton jButtonErrEgKon = null;
 
     private static BLFacade appFacadeInterface;
 	
@@ -69,28 +71,31 @@ public class MainBidaiariGUI extends JFrame {
 				a.setVisible(true);
 			}
 		});
-	    
-	    contentPane = new JPanel();
-		contentPane.setLayout(null);
-		contentPane.add(jLabelSelectOption);
-		contentPane.add(jButtonWallet);
-		contentPane.add(jButtonRequestRide);
+	   
 		
 		setContentPane(contentPane);
 		
-		/*JButton ErreserbenEgoeraKon = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainBidaiariGUI.btnNewButton.text")); //$NON-NLS-1$ //$NON-NLS-2$
-		ErreserbenEgoeraKon.addActionListener(new ActionListener() {
+		jButtonErrEgKon = new JButton();
+		jButtonErrEgKon.setBounds(0, 193, 481, 60);
+		jButtonErrEgKon.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGidariGUI.TravelStatus"));
+		jButtonErrEgKon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFrame a= new ErrEgKonGUI(bidaiari);
+				JFrame a= new ErrEgKon(bidaiari);
 				a.setVisible(true);
 			}
 		});
-		ErreserbenEgoeraKon.setBounds(0, 193, 481, 60);
-		contentPane.add(ErreserbenEgoeraKon);
-		setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainBidaiariGUI.Title"));
-		*/
 		
+		jButtonSeeMovements = new JButton();
+		jButtonSeeMovements.setBounds(0, 210, 481, 42);
+		jButtonSeeMovements.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGidariGUI.SeeMovements"));
+		jButtonSeeMovements.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				//JFrame a = new OnartuGUI(driver);
+				//a.setVisible(true);
+			}
+		});
 		
+
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -98,5 +103,16 @@ public class MainBidaiariGUI extends JFrame {
 			}
 		});
 
+		contentPane = new JPanel();
+		contentPane.setLayout(new GridLayout(5, 1, 0, 0));
+		contentPane.add(jLabelSelectOption);
+		contentPane.add(jButtonWallet);
+		contentPane.add(jButtonRequestRide);
+		contentPane.add(jButtonErrEgKon);
+		//Bidaia erreserbatu??
+		contentPane.add(jButtonSeeMovements);
+
+		
+		setContentPane(contentPane);
 	}
 }
